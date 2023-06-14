@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load s_tag %}
+
+{% block content %}
+<body>
+<!-- welcome section -->
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>Sтройка - интернет каталог стройматериалов</h3>
+        <h2>Самый надежный поставщик стройматериалов в Долгопрудном!</h2>
+        <a href="">
+            <p> Для оформления заказов: 8 (800) 511-65-98</p>
+        </a>
+        
+    </div>
+</section>
+
+<!-- Почему Мы? -->
+<section class="icons-container">   
+    <div class="icons">
+        <img src="{% static 'img/icons/helmet.png' %}" alt="">
+        <div class="info">
+            <h3>Ассортимент</h3>
+            <span>Самый широкий ассортимент товара в городе</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="{% static 'img/icons/satisfaction.png' %}" alt="">
+        <div class="info">
+            <h3>Гарантия</h3>
+            <span>Мы предостовляем 14 дней гарантии на весь товар</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="{% static 'img/icons/delivery-man.png' %}" alt="">
+        <div class="info">
+            <h3>Бесплатная доставка</h3>
+            <span>По территории Москвы и Московской области</span>
+        </div>
+    </div>
+</section>
+
+<!-- Секция с категориями -->
+
+<section class="categories">
+    <div class="container">
+        <h3 class="title">Каталог стройматериалов</h3>
+        <div class="product-container">
+        {% get_categories as categories %}
+        {% for category in categories %}
+            <a href="{% url 'mat:categories' category.id %}" class="product" data-name="p-1">
+                <img src="{{ category.images.url }}" alt="">
+                <h3>{{ category.name }}</h3>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="gallery">
+    <h1 class="title">Акции и специальные предложения</h1>
+    <div class="box-container">
+        <div class="box">
+            <img src="{% static 'img/sale/open.jpg' %}" alt="">
+        </div>
+    </div>
+</section>
+
+</body>
+
+{% endblock content %}

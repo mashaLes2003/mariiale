@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load s_tag %}
+<!-- welcome section -->
+
+<section class="categories">
+    <div class="container">
+        <h3 class="title">Ассортимент</h3>
+
+        <div class="product-container">
+        {% for str in mat %}
+            <a href="#" class="product" data-name="p-1">
+                <img src="{{ str.image.url }}" alt="">
+                <h3>{{ str.title }}</h3>
+                <h3>{{ str.price }}руб.{{ str.quantity }}</h3>
+                <h3>Артикул: {{ str.code }}</h3>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
